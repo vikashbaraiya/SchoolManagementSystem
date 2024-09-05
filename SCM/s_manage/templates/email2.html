@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif !important;
+            margin: 20px !important;
+        }
+
+        form {
+            max-width: 450px !important;
+            margin: 0 auto !important;
+            height: 480px !important;
+            padding: 0 40px !important;
+            box-shadow: 0px 15px 25px rgba(7, 7, 7, 0.7) !important;
+        }
+
+        textarea {
+            width: 100% !important;
+            height: 100px !important;
+            resize: vertical !important;
+        }
+
+        .submit-button {
+            width: 60% !important;
+            padding: 0.5rem 1rem !important;
+            color: white !important;
+            font-size: 1.2rem !important;
+            border-radius: 50px !important;
+            background-color: #24A7DF !important;
+            border: none !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            cursor: pointer !important;
+            margin-left:75px !important;
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3 !important;
+        }
+
+        .radio_item {
+            display: none !important;
+        }
+        
+
+        .activeImg {
+            display: none !important;
+        }
+
+        .inactiveImg {
+            display: block !important;
+        }
+
+        .radio_item:checked+label .activeImg {
+            display: block !important;
+        }
+
+        .radio_item:checked+label .inactiveImg {
+            display: none !important;
+        }
+
+        label {
+            cursor: pointer !important;
+            font-size: 15px !important;
+            font-weight: 400 !important;
+            text-align: center !important;
+            color: #8F8F8F !important;
+        }
+
+        .title {
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            text-align: center !important;
+            color: #22A6E3 !important;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px !important;
+            padding: 12px 20px !important;
+            box-sizing: border-box !important;
+            border: 2px solid #ccc !important;
+            border-radius: 4px !important;
+            background-color: #f8f8f8 !important;
+            font-size: 16px !important;
+            resize: none !important;
+        }
+
+        .container {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            
+        }
+
+        .heading {
+            text-align: center !important
+            
+        }
+        .showy {
+            height: 100% !important;
+            width: 100% !important;
+          }
+
+          .activeImg {
+            /* add margin here of If you want */
+            width: 50px !important;
+            height: 50px !important;
+            border: 0px solid #747474;
+            border-radius: 50%;
+            outline: none;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+        .activeImg:hover:before {
+            box-shadow: 0px 0px 0px 12px rgba(80, 80, 200, 0.2); /* control thickens on border here */
+            border-radius: 50%;
+            opacity: 1;
+        }
+        .activeImg:before {
+            content: '';
+            display: block;
+            width: 100%; /* outside border*/
+            height: 100%; /* for outside border */
+            border-radius: 50%;
+            transition:.3s; /* for animation*/
+        }
+        .activeImg:checked:before {
+            background: green;
+        }
+        
+        .text{
+            justify-content: left !important;
+            width:450px !important;
+            margin-left: 450px !important;
+        }
+       
+        
+    </style>
+    <style>
+        .opt-container {
+            position: relative;
+            max-width: 80%;
+            left: 100px;
+            cursor: pointer;
+            font-size: 22px;
+            margin-bottom: 10px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+          }
+          
+          .opt-container input[type=radio] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+          }
+          
+          .button-label {
+            position: relative;
+            background-color: #DCDCDC;
+            border-radius: 5px;
+            max-width: 660px;
+            left: 50px;
+            padding-left: 10px;
+          }
+          
+          .radio-label {
+            cursor: pointer;
+          }
+          
+          .new-button {
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            background-color: #eee;
+            border-radius: 50%;
+          }
+          
+          .opt-container:hover .new-button,
+          .opt-container:hover .button-label {
+            background-color: rgba(213, 42, 42, 0.5);
+          }
+          
+          .opt-container input:checked~.new-button,
+          .opt-container input:checked~.button-label {
+            background-color: #7EE29E;
+          }
+          @media (max-width: 1080px)
+        {
+            .container .text h3 h4 h5
+            {
+                width: 100%;
+                justify-content: left !important;
+             
+                margin-left: 450px !important;
+            }
+            .input-name
+            {
+                margin-bottom: 5px;
+            }
+            .name
+            {
+                width: 100%;
+                padding: 8px 0 8px 40px;
+                margin-bottom: 1px;
+            }
+            .input-name span
+            {
+                padding: 0;
+                margin: 0;
+            }
+}
+
+    </style>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text">
+                <h3 style="color:rgb(155, 149, 149)">Dear {{username}}</h3>
+
+                <h4 style="color:rgb(155, 149, 149)"> Thank you for choosing our Tax Planning Services. We are pleased to inform you that you've successfully completed your tax planning session with our expert.</h4>
+                    
+                <h4 style="color:rgb(155, 149, 149)">We greatly value your feedback and would appreciate it if you could take a moment to share your thoughts in our feedback form.</h4>
+        </div>
+        <h2 class="heading">Feedback Form</h2>
+        <form action="https://stg.minty.co.in/money_managment/feature_feedback/" method="POST">
+            <p class="title" style="color:rgb(155, 149, 149)">Please select an emoji to give your feedback:</p>
+            <p class="text-2" style="color:rgb(155, 149, 149)">Please share your opinion via this short survey. It'll take less than 2 minutes to fill out and would be very helpful to us.</p>
+            <p style="color:rgb(155, 149, 149); justify-content:center;margin-left:125px;margin-top:-10px"> Your feedback counts.</p>
+            <p class="text-2" style="color:rgb(155, 149, 149); justify-content:center;margin-left:15px">How satisfied are you with your experience with our service?</p>
+            <div style="display: flex;align-items: center;justify-content: center;gap: 1rem;">
+                <div>
+                    <input type="radio" id="reaction1" name="ff_rating" value="1" class="radio_item">
+
+                    <label for="reaction1" class="label_item">
+                        <img src="https://stg.minty.co.in/static/userflow/img/icons/reaction1.png" alt=""
+                            class="inactiveImg">
+                        <img src="https://stg.minty.co.in/static/userflow/img/icons/reaction1_active.png" alt=""
+                            class="activeImg">
+                    </label>
+                </div>
+
+                <div>
+                    <input type="radio" id="reaction2" name="ff_rating" value="2" class="radio_item">
+                    <label for="reaction2" class="label_item">
+                        <img src="https://stg.minty.co.in/static/userflow/img/icons/reaction2.png" alt=""
+                            class="inactiveImg">
+                        <img src="https://stg.minty.co.in/static/userflow/img/icons/reaction2_active.png" alt=""
+                            class="activeImg">
+                    </label>
+                </div>
+
+                <div>
+                    <input type="radio" id="reaction3" name="ff_rating" value="3" class="radio_item">
+                    <label for="reaction3" class="label_item">
+                        <img src="https://stg.minty.co.in/static/userflow/img/icons/reaction3.png" alt=""
+                            class="inactiveImg">
+                        <img src="https://stg.minty.co.in/static/userflow/img/icons/reaction3_active.png" alt=""
+                            class="activeImg">
+                    </label>
+                </div>
+
+                <div>
+                    <input type="radio" id="reaction4" name="ff_rating" value="4" class="radio_item">
+                    <label for="reaction4" class="label_item">
+                        <img src="https://stg.minty.co.in/static/userflow/img/icons/reaction4.png" alt=""
+                            class="inactiveImg">
+                        <img src="https://stg.minty.co.in/static/userflow/img/icons/reaction4_active.png" alt=""
+                            class="activeImg">
+                    </label>
+                </div>
+
+                <div>
+                    <input type="radio" id="reaction5" name="ff_rating" value="5" class="radio_item">
+                    <label for="reaction5" class="label_item">
+                        <img src="https://stg.minty.co.in/static/userflow/img/icons/reaction5.png" alt=""
+                            class="inactiveImg">
+                        <img src="https://stg.minty.co.in/static/userflow/img/icons/reaction5_active.png" alt=""
+                            class="activeImg">
+                    </label>
+                </div>
+                
+            </div>
+            <br>
+            <label for="remarks">Additional Remarks:</label>
+
+            <textarea style="margin: 10px 0;" id="remarks" name="ff_remarks" placeholder="Enter your remarks here..."
+                required></textarea><br>
+            <input type="hidden" name="ff_name" value="TAX PLANING">
+            <input type="hidden" name="user_id" value={{user_id}}>
+            <input  type="submit" value="Submit Feedback" class="submit-button">
+        </form>
+        <div class="text">
+            <p style="color:rgb(78, 70, 70);margin-top:50px" >Regards,</p>
+            <p style="color:rgb(93, 83, 83)">Team Fintoo</p>
+        </div>
+        
+    </div>
+</body>
+
+</html>
