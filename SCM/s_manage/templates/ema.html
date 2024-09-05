@@ -1,0 +1,100 @@
+
+
+<template id="star-rating-template">
+  <style>
+  rating {
+      display: inline-flex;
+  }
+ input {
+     appearance: none;
+     margin: 0;
+     box-shadow: none;
+ }
+ input::after {
+     content: '\2605'; /* solid star */
+     font-size: 32px;
+ }
+ rating:hover input:invalid::after,
+ rating:focus-within input:invalid::after {
+     color: #888;
+ }
+ input:invalid::after,
+ rating:hover input:hover ~ input:invalid::after,
+ input:focus ~ input:invalid::after  {
+     color: #ddd;
+  }
+ input:valid {
+     color: orange;
+ }
+ input:checked ~ input:not(:checked)::after {
+     color: #ccc;
+     content: '\2606'; /* hollow star */
+ }
+    :host(:not(#nonExistantId)) { /* try changing this to :host(.first) */
+      margin-bottom: 3em;
+      display: block;
+      color: rebeccapurple;
+    }
+    :host button {
+      font-style: italic;
+      /* we could have just used `button` */
+    }
+    ::slotted(legend)::after {
+      content: " - matches `::slotted(legend)` from the shadow DOM"
+    }
+    star-rating::part(fieldsetPart)::after  {
+      content: " - this matches `star-rating::part(fieldsetPart)`"
+     }
+     :where(star-rating) {
+       margin-bottom: 0;
+       display: block;
+     }
+  </style>
+  <script>
+    
+//let starRating = document.getElementById("star-rating-template").content;
+//document.body.appendChild(starRating);
+
+customElements.define('star-rating',
+class extends HTMLElement {
+  constructor() {
+    super(); // Always call super first in constructor
+    const starRating = document.getElementById('star-rating-template').content;
+    const shadowRoot = this.attachShadow({mode: 'open'});
+    shadowRoot.appendChild(starRating.cloneNode(true));
+}
+});
+  </script>
+<form part="formPart">
+ <fieldset part="fieldsetPart">
+ <slot name="star-rating-legend"  part="legendPart"><legend>Rate your experience:</legend></slot>
+
+    <rating>
+      <input type="radio" name="rating" value="1" aria-label="1 star" required/>
+      <input type="radio" name="rating" value="2" aria-label="2 stars"/>
+      <input type="radio" name="rating" value="3" aria-label="3 stars"/>
+      <input type="radio" name="rating" value="4" aria-label="4 stars"/>
+      <input type="radio" name="rating" value="5" aria-label="5 stars"/>
+    </rating>
+   </fieldset>
+   <button type="reset">Reset</button>
+   <button type="submit">Submit</button>
+</form>
+</template>
+
+<star-rating class="first">
+ <legend slot="star-rating-legend">Blendan Smooth</legend>
+</star-rating>
+<star-rating id="second">
+ <legend slot="star-rating-legend">Hoover Sukhdeep</legend>
+</star-rating>
+<star-rating data-count="third">
+ <legend slot="star-rating-legend">Toasty McToastface <input></legend>
+ <p>Is this text visible?</p>
+</star-rating>
+<star-rating>
+ <p>Is this text visible?</p>
+</star-rating>
+
+
+  

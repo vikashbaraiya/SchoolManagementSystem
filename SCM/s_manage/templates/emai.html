@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radio Button Selection Feedback</title>
+<style>
+  /* Hide default radio button */
+  input[type="radio"] {
+    display: none;
+  }
+
+  /* Custom radio button styles */
+  .custom-radio {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  /* Style radio button label when checked */
+  input[type="radio"]:checked + label .custom-radio {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  /* Additional styles for label text */
+  label {
+    cursor: pointer;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<form>
+  <input type="radio" id="option1" name="options" value="option1">
+  <label for="option1"><span class="custom-radio"></span>Option 1</label><br>
+  
+  <input type="radio" id="option2" name="options" value="option2">
+  <label for="option2"><span class="custom-radio"></span>Option 2</label><br>
+  
+  <input type="radio" id="option3" name="options" value="option3">
+  <label for="option3"><span class="custom-radio"></span>Option 3</label><br>
+</form>
+
+</body>
+</html>

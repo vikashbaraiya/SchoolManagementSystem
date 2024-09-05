@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif !important;
+            margin: 20px !important;
+        }
+
+        form {
+            margin: 0 auto !important;
+        }
+
+        textarea {
+            width: 100% !important;
+            resize: vertical !important;
+        }
+
+        .submit-button {
+            width: fit-content !important;
+            padding: 0.5rem 3rem !important;
+            margin: 0 auto;
+            color: white !important;
+            font-size: 1rem !important;
+            border-radius: 50px !important;
+            background-color: #24A7DF !important;
+            border: none !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            cursor: pointer !important;
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3 !important;
+        }
+
+        .radio_item {
+            display: none !important;
+        }
+
+
+        .activeImg {
+            display: none !important;
+        }
+
+        .inactiveImg {
+            display: block !important;
+        }
+
+        .radio_item:checked+label .activeImg {
+            background-color: #7EE29E;
+            display: block !important;
+        }
+
+        .radio_item:checked+label .inactiveImg {
+            display: none !important;
+        }
+
+        .opt-container input[type="radio"]:checked+label .inactiveImg {
+            background-color: #7EE29E;
+        }
+
+        label {
+            cursor: pointer !important;
+            font-size: 15px !important;
+            font-weight: 400 !important;
+            text-align: center !important;
+            color: #8F8F8F !important;
+        }
+
+        label div {
+            cursor: pointer;
+        }
+
+        .title {
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            text-align: center !important;
+            color: #22A6E3 !important;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px 20px !important;
+            box-sizing: border-box !important;
+            border: 2px solid #ccc !important;
+            border-radius: 4px !important;
+            background-color: #f8f8f8 !important;
+            font-size: 16px !important;
+            resize: none !important;
+        }
+
+        .container {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+        }
+
+        .heading {
+            text-align: center !important
+        }
+
+        .showy {
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        .activeImg {
+            width: 50px;
+            height: 50px;
+            border: 0px solid #747474;
+            border-radius: 50%;
+            outline: none;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        .activeImg:before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            transition: .3s;
+        }
+
+        .activeImg:checked:before {
+            background: green;
+        }
+
+        .reaction1 {
+            background-image: url('https://stg.minty.co.in/static/userflow/img/icons/reaction1.png');
+            height: 80px;
+            width: 80px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .reaction1:hover,
+        #reaction1:checked+.label_item1 .reaction1 {
+            background-image: url('https://stg.minty.co.in/static/userflow/img/icons/reaction1_active.png') !important;
+        }
+
+        .reaction2 {
+            background-image: url('https://stg.minty.co.in/static/userflow/img/icons/reaction2.png');
+            height: 80px;
+            width: 80px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .reaction2:hover,
+        #reaction2:checked+.label_item2 .reaction2 {
+            background-image: url('https://stg.minty.co.in/static/userflow/img/icons/reaction2_active.png') !important;
+        }
+
+        .reaction3 {
+            background-image: url('https://stg.minty.co.in/static/userflow/img/icons/reaction3.png');
+            height: 80px;
+            width: 80px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .reaction3:hover,
+        #reaction3:checked+.label_item3 .reaction3 {
+            background-image: url('https://stg.minty.co.in/static/userflow/img/icons/reaction3_active.png') !important;
+        }
+
+        .reaction4 {
+            background-image: url('https://stg.minty.co.in/static/userflow/img/icons/reaction4.png');
+            height: 80px;
+            width: 80px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .reaction4:hover,
+        #reaction4:checked+.label_item4 .reaction4 {
+            background-image: url('https://stg.minty.co.in/static/userflow/img/icons/reaction4_active.png') !important;
+        }
+
+        .reaction5 {
+            background-image: url('https://stg.minty.co.in/static/userflow/img/icons/reaction5.png');
+            height: 80px;
+            width: 80px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .reaction5:hover,
+        #reaction5:checked+.label_item5 .reaction5 {
+            background-image: url('https://stg.minty.co.in/static/userflow/img/icons/reaction5_active.png') !important;
+        }
+        .text{
+            justify-content: left !important;
+            width:450px !important;
+            margin-left: 450px !important;
+        }
+        form {
+            max-width: 450px !important;
+            margin: 0 auto !important;
+            height: 480px !important;
+            padding: 0 40px !important;
+            /* box-shadow: 0px 15px 25px rgba(7, 7, 7, 0.7) !important; */
+        }
+    </style>
+</head>
+<body>
+    <table width="700px" cellspacing="0px" cellpadding="0px" style="display: block;margin:0 auto;width:700px">
+        <tr>
+            <td>
+                <div style="padding:15px;padding-top: 0;">
+                    <table width="600px" cellpadding="30px" cellspacing="0px" bgcolor="#ffffff" style="font-size:16px;line-height:1.4;background:#ffffff;color:#606161;font-family:Arial, Helvetica, sans-serif;width: 600px;margin:0 auto;">
+                        <tr>
+                            <td style="padding: 30px 0;">
+                                <a href='{{BASE_URL}}'><img src='https://stg.minty.co.in/static/assets/img/{{ site_logo }}' style="width:170px"></a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" style="padding: 0;">
+                                <img src="https://stg.minty.co.in/static/assets/img/mail-banner-new.png" alt="Email banner"  style="display: block;width: 600px;margin:0 auto;">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" style="padding: 20px 0 0;">
+
+
+                                <div style="clear:both;"></div>
+                                <div style="">
+                                    <div style="font-size:20px; padding-top:25px;">
+                                        <p>Dear {{ username }},</p>
+                                        <p> Thank you for choosing our Tax Planning Services. We are pleased to inform you that you've successfully completed your tax planning session with our expert.</p>
+                                        <p>We greatly value your feedback and would appreciate it if you could take a moment to share your thoughts in our feedback form.</p>
+                                        <div marginwidth="0" marginheight="0"style="width:548px;height: 450px;margin:0 auto;padding:15px 25px;border-radius: 5px;border: 1px solid rgb(209, 209, 209);">
+                                            <form action="{{BASE_URL}}/money_managment/feature_feedback/" method="POST" style="width: 100%;">
+                                                <h2 class="heading" style="margin-top: 20px;">Feedback Form</h2>
+                                                    <p class="title">Please select an emoji to give your feedback:</p>
+                                                    <p style="font-size: 17px; width: 555px;">How satisfied are you with your experience with our services?</p>
+                                                    <div style="width: fit-content;margin: 0 auto;">
+                                                        <div style="float: left;">
+                                                            <input type="radio" id="reaction1" name="ff_rating" value="1" class="radio_item">
+                                                            <label for="reaction1" class="label_item label_item1">
+                                                                <div class="reaction1">
+                                                                    &nbsp;
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                        <div style="float: left;">
+                                                            <input type="radio" id="reaction2" name="ff_rating" value="2" class="radio_item">
+                                                            <label for="reaction2" class="label_item label_item2">
+                                                                <div class="reaction2">
+                                                                    &nbsp;
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                        <div style="float: left;">
+                                                            <input type="radio" id="reaction3" name="ff_rating" value="3" class="radio_item">
+                                                            <label for="reaction3" class="label_item label_item3">
+                                                                <div class="reaction3">
+                                                                    &nbsp;
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                        <div style="float: left;">
+                                                            <input type="radio" id="reaction4" name="ff_rating" value="4" class="radio_item">
+                                                            <label for="reaction4" class="label_item label_item4">
+                                                                <div class="reaction4">
+                                                                    &nbsp;
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                        <div style="float: left;">
+                                                            <input type="radio" id="reaction5" name="ff_rating" value="5" class="radio_item">
+                                                            <label for="reaction5" class="label_item label_item5">
+                                                                <div class="reaction5">
+                                                                    &nbsp;
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                    
+                                                    </div>
+                                                    <label for="remarks" style="float: left;">Additional Remarks:</label>
+                                    
+                                                    <textarea style="margin: 10px 0;" id="remarks" name="ff_remarks"
+                                                        placeholder="Enter your remarks here..." required></textarea><br>
+                                                    <input type="hidden" name="ff_name" value="TAX PLANING">
+                                                    <input type="hidden" name="user_id" value={{user_id}}>
+                                                    <input type="hidden" name="ff_appointment_id" value={{ff_appointment_id}}>
+                                                    <input type="submit" value="Submit Feedback" class="submit-button">
+                                                </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div style="clear:both;"></div>
+                                <hr style="margin: 20px 0;color: #105364; border: 0.5px solid #105364;">
+                                <p>For advice on the go, download the Fintoo app now!</p>
+                                <div>
+                                    <div>
+                                        <a href="https://goo.gl/6UtMq5" target="_blank"><img align="left" src="https://www.financialhospital.in/images/minty-app-store.png" alt="App store download"></a>
+                                    </div>
+                                    <div style="margin-left: 130px;">
+                                        <a href="https://goo.gl/14bUH5" target="_blank"><img align="left" src="https://www.financialhospital.in/images/minty-android-app.png" alt="App store download"></a>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <hr style="margin: 20px 0;color: #105364; border: 0.5px solid #105364;">
+                                </div>
+
+
+
+                                <p>Regards,</br>
+                                    Team Fintoo</p>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" style="padding: 0;">
+                                <ul style="list-style: none;text-align: center;padding: 0;">
+                                    <li style="display: inline-block;vertical-align: middle; margin: 0 15px;">
+                                        <a href="{{ Facebook }}" style="display: block;"><img src="{{BASE_URL}}/static/assets/img/icon-facebook.png" alt="" style="width: 10px;display: block; vertical-align: middle;"></a>
+                                    </li>
+                                    <li style="display: inline-block;vertical-align: middle; margin: 0 15px;">
+                                        <a href="{{ Twitter }}" style="display: block;"><img src="{{BASE_URL}}/static/assets/img/icon-twitter.png" alt="Twitterr" style="width: 25px;display: block; vertical-align: middle;"></a>
+                                    </li>
+                                    <li style="display: inline-block;vertical-align: middle; margin: 0 15px;">
+                                        <a href="{{ LinkedIn }}" style="display: block;"><img src="{{BASE_URL}}/static/assets/img/icon-linkedin.png" alt="" style="width: 25px;display: block; vertical-align: middle;"></a>
+                                    </li>
+                                    <li style="display: inline-block;vertical-align: middle; margin: 0 15px;">
+                                        <a href="{{ Insta }}" style="display: block;"><img src="{{BASE_URL}}/static/assets/img/icon-insta.png" alt="" style="width: 30px;display: block; vertical-align: middle;"></a>
+                                    </li>
+                                     <li style="display: inline-block;vertical-align: middle; margin: 0 15px;">
+                                <a href="{{ Youtube }}" style="display: block;"><img src="{{BASE_URL}}/static/assets/img/social-youtube.png" alt="" style="width: 30px;display: block; vertical-align: middle;"></a>
+                            </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="color: #ffffff;font-family:Arial, Helvetica, sans-serif;font-size:12px;width: 600px;margin:0 auto;" width="600px">
+                        <tr valign="middle">
+                            <td>
+                                <ul style="margin:0;padding: 0;">
+                                    <li style="display: inline-block;vertical-align: middle; margin: 0 15px;margin-left: 0;"><img src="{{BASE_URL}}/static/assets/img/icon-call.png" alt="" style="display: inline-block; width: 20px;vertical-align: middle;margin-right: 12px;"><a href="tel:{{tech_support}}" style="display: inline-block;text-decoration: none; color: #000000;vertical-align: middle;">{{tech_support}}</a>                                        </li>
+                                    <li style="display: inline-block;vertical-align: middle; margin: 0 15px;"><img src="{{BASE_URL}}/static/assets/img/icon-mail.png" alt="" style="display: inline-block; width: 20px;vertical-align: middle;margin-right: 12px;"><a href='mailto:{{support_email}}' style="display: inline-block;text-decoration: none; color: #000000;vertical-align: middle;">{{support_email}}</a></li>
+                                    <li style="display: inline-block;vertical-align: middle; margin: 0 15px;margin-right: 0;"><img src="{{BASE_URL}}/static/assets/img/icon-website.png" alt="" style="display: inline-block; width: 20px;vertical-align: middle;margin-right: 12px;"><a href='{{fintoo_live_url}}' style="display: inline-block;text-decoration: none; color: #000000;vertical-align: middle;">{{fintoo_live_url}}</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
